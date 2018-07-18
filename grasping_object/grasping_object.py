@@ -1,7 +1,7 @@
 from markov_logic_network.database import Database
 
 
-class GraspingObject:
+class GraspingObject(object):
     def __init__(self, object_type, orientation):
         self.type = object_type
         self.orientation = orientation
