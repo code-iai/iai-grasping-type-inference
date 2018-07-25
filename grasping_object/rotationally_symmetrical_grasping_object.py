@@ -1,4 +1,5 @@
 from grasping_object import GraspingObject
+import markov_logic_network.ground_atom_builder as gab
 
 
 class RotationallySymmetricalGraspingObject(GraspingObject):
@@ -7,6 +8,7 @@ class RotationallySymmetricalGraspingObject(GraspingObject):
 
     def transform_to_mln_database(self, mln):
         database = super(RotationallySymmetricalGraspingObject, self).transform_to_mln_database(mln)
-        database.add_ground_atom('is_rotationally_symmetric({})'.format(self.type))
+        database.add_ground_atom(gab.get_is_rotationally_symmetric(self.type))
 
         return database
+
