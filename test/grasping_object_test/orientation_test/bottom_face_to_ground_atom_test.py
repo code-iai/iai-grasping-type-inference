@@ -3,7 +3,7 @@ from face import Face
 from grasping_object.orientation import Orientation
 
 
-class FacingRobotFaceToGroundAtomTest(unittest.TestCase):
+class BottomFaceToGroundAtomTest(unittest.TestCase):
     def test_should_return_bottom_face_left_as_ground_atom(self):
         expected_value = "bottom_face(left)"
         orientation = Orientation(Face.TOP, Face.LEFT)

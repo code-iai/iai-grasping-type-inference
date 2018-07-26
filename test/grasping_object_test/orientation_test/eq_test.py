@@ -3,7 +3,7 @@ from grasping_object.orientation import Orientation
 from test.utils.test_object_generator import FACING_ROBOT_FACE, BOTTOM_FACE
 
 
-class Equals(unittest.TestCase):
+class EqualsTest(unittest.TestCase):
     def test_should_return_true_if_orientations_are_equal(self):
         orientation_1 = Orientation(FACING_ROBOT_FACE, BOTTOM_FACE)
         orientation_2 = Orientation(FACING_ROBOT_FACE, BOTTOM_FACE)

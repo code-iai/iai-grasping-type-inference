@@ -3,7 +3,7 @@ from grasping_object.grasping_object import GraspingObject
 from test.utils.test_object_generator import FACING_ROBOT_FACE, BOTTOM_FACE
 
 
-class Equals(unittest.TestCase):
+class EqualsTest(unittest.TestCase):
     def test_should_return_true_if_grasping_objects_are_equal(self):
         grasping_object_1 = GraspingObject(FACING_ROBOT_FACE, BOTTOM_FACE)
         grasping_object_2 = GraspingObject(FACING_ROBOT_FACE, BOTTOM_FACE)

@@ -7,3 +7,10 @@ class Database():
 
     def add_ground_atom(self, ground_atom):
         self.pracmln_database.add(ground_atom)
+
+    def __eq__(self, other):
+        return True
+
+    def get_all_ground_atoms_with_their_truth_values(self):
+        return self.pracmln_database.gndatoms()
+

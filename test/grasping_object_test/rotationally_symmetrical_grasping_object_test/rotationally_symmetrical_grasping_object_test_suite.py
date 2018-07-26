@@ -1,16 +1,14 @@
-from bottom_face_to_ground_atom_test import BottomFaceToGroundAtomTest
 from eq_test import EqualsTest
-from facing_robot_face_to_ground_atom_test import FacingRobotFaceToGroundAtomTest
+from transform_to_mln_database_test import TransformToMLNDatabase
 import unittest
 
 test_cases = [
-    BottomFaceToGroundAtomTest,
     EqualsTest,
-    FacingRobotFaceToGroundAtomTest
+    TransformToMLNDatabase
 ]
 
 
-class OrientationTestSuite(unittest.TestSuite):
+class RotationallySymmetricalGraspingObjectSuite(unittest.TestSuite):
     def __init__(self):
         test_suits = [unittest.makeSuite(x) for x in test_cases]
         unittest.TestSuite.__init__(self, test_suits)
@@ -18,4 +16,3 @@ class OrientationTestSuite(unittest.TestSuite):
 
 if __name__ == "__main__":
     unittest.main()
-
