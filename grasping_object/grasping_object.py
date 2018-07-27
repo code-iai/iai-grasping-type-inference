@@ -10,9 +10,9 @@ class GraspingObject(object):
     def transform_to_mln_database(self, mln):
         database = Database(mln)
 
-        database.add_ground_atom(gab.get_obj_to_be_grasped(self.type))
-        database.add_ground_atom(self.orientation.transform_facing_robot_face_to_ground_atom())
-        database.add_ground_atom(self.orientation.transform_bottom_face_to_ground_atom())
+        database.add_true_ground_atom(gab.get_obj_to_be_grasped(self.type))
+        database.add_true_ground_atom(self.orientation.transform_facing_robot_face_to_ground_atom())
+        database.add_true_ground_atom(self.orientation.transform_bottom_face_to_ground_atom())
 
         return database
 

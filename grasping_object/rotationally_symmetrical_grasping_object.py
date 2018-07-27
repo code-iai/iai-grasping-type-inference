@@ -8,7 +8,7 @@ class RotationallySymmetricalGraspingObject(GraspingObject):
 
     def transform_to_mln_database(self, mln):
         database = super(RotationallySymmetricalGraspingObject, self).transform_to_mln_database(mln)
-        database.add_ground_atom(gab.get_is_rotationally_symmetric(self.type))
+        database.add_true_ground_atom(gab.get_is_rotationally_symmetric(self.type))
 
         return database
 

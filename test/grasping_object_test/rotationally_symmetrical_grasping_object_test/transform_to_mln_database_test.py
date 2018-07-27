@@ -1,6 +1,6 @@
 import unittest
 from test.utils.test_object_generator \
-    import get_rotationally_symmetrical_grasping_object, get_grasping_object_as_mln_database, \
+    import get_rotationally_symmetrical_grasping_object, get_grasping_object_as_true_mln_database, \
             GRASPING_OBJECT_TYPE, FACING_ROBOT_FACE, BOTTOM_FACE
 from markov_logic_network.grasping_type_mln import grasping_type_mln
 import markov_logic_network.ground_atom_builder as gab
@@ -21,7 +21,7 @@ def __get_expected_mln_database__():
                     gab.get_obj_to_be_grasped(GRASPING_OBJECT_TYPE),
                     gab.get_is_rotationally_symmetric(GRASPING_OBJECT_TYPE)]
 
-    return get_grasping_object_as_mln_database(grasping_type_mln, ground_atoms)
+    return get_grasping_object_as_true_mln_database(grasping_type_mln, ground_atoms)
 
 
 if __name__ == "__main__":
