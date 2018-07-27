@@ -12,7 +12,7 @@ class AllGroundAtomsWithTheirTruthValuesTest(unittest.TestCase):
         self.__test__ground_atoms__(get_test_false_mln_database(), 0.0)
 
     def __test__ground_atoms__(self, test_database, expected_truth_value):
-        ground_atoms_with_their_truth_values = test_database.get_all_ground_atoms_with_their_truth_values()
+        ground_atoms_with_their_truth_values = test_database.get_ground_atoms_with_truth_values()
         self.__test_returned_ground_atoms__(ground_atoms_with_their_truth_values, expected_truth_value)
 
     def __test_returned_ground_atoms__(self, ground_atoms_with_their_truth_values,  expected_truth_value):

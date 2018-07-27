@@ -11,12 +11,25 @@ class Database():
     def add_false_ground_atom(self, ground_atom):
         self.__add_ground_atom_with_truth_value__(ground_atom, 0.0)
 
+    def get_ground_atoms_with_truth_values(self):
+        return self.pracmln_database.gndatoms()
+
     def __add_ground_atom_with_truth_value__(self, ground_atom, truth_value):
         self.pracmln_database.add(ground_atom, truth_value)
 
-    def get_all_ground_atoms_with_their_truth_values(self):
-        return self.pracmln_database.gndatoms()
-
     def __eq__(self, other):
-        return False
+        ground_atoms_with_truth_values = \
+            __transform_ground_atoms_with_truth_values_to_hash_map__(self.get_ground_atoms_with_truth_values())
+        other_ground_atoms_with_truth_values = \
+            __transform_ground_atoms_with_truth_values_to_hash_map__(other.get_ground_atoms_with_truth_values())
 
+        return ground_atoms_with_truth_values == other_ground_atoms_with_truth_values
+
+
+def __transform_ground_atoms_with_truth_values_to_hash_map__(ground_atoms_with_truth_values):
+    hash_map = dict()
+
+    for ground_atom, truth_value in ground_atoms_with_truth_values:
+        hash_map[ground_atom] = truth_value
+
+    return hash_map
