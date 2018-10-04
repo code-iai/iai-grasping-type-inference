@@ -1,11 +1,25 @@
 from markov_logic_network.database import Database
 import markov_logic_network.ground_atom_builder as gab
+from markov_logic_network.grasping_type_mln import grasping_type_mln
+from markov_logic_network.is_a_generator import get_is_a_ground_atoms
 
 
 class GraspingObject(object):
     def __init__(self, object_type, orientation):
         self.type = object_type
         self.orientation = orientation
+
+    def get_most_probable_grasping_type(self):
+        learned_objects = grasping_type_mln.domains['learnedObject']
+
+        evidence_database = self.transform_to_mln_database(grasping_type_mln)
+        is_a_ground_atoms = get_is_a_ground_atoms(self.type, learned_objects)
+
+        for ground_atom in is_a_ground_atoms.keys():
+            similarity = is_a_ground_atoms[ground_atom]
+            evidence_database.add_ground_atom_with_truth_value(ground_atom, similarity)
+
+        return grasping_type_mln.infer(evidence_database)
 
     def transform_to_mln_database(self, mln):
         database = Database(mln)

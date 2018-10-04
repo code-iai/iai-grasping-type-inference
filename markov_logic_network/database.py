@@ -2,8 +2,8 @@ from pracmln.mln.database import Database as PRACMLNDatabase
 
 
 class Database():
-    def __init__(self, pracmln_mln):
-        self.pracmln_database = PRACMLNDatabase(pracmln_mln)
+    def __init__(self, mln):
+        self.pracmln_database = PRACMLNDatabase(mln.pracmln)
 
     def add_true_ground_atom(self, ground_atom):
         self.add_ground_atom_with_truth_value(ground_atom, 1.0)

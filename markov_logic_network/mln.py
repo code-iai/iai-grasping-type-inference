@@ -10,7 +10,8 @@ class MarkovLogicNetwork:
         self.__logic__ = self.__config__.config['logic']
         self.__grammar__ = self.__config__.config['grammar']
         self.__mln_name__ = self.__config__.config['mln']
-        self.__mln__ = self.__parse_mln_from_text__()
+        self.pracmln = self.__parse_mln_from_text__()
+        self.domains = self.pracmln.domains
 
     def __parse_mln_from_text__(self):
         mln_text = self.pracmln_project.mlns.get(self.__mln_name__)
@@ -18,7 +19,7 @@ class MarkovLogicNetwork:
 
     def infer(self, database):
         mln_query = MLNQuery(self.__config__,
-                             mln=self.__mln__,
+                             mln=self.pracmln,
                              db=database.pracmln_database,
                              verbose=0)
 
