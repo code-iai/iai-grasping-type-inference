@@ -1,15 +1,33 @@
 #! /usr/bin/env python
 
+from grasping_type_inference_msgs.srv import *
+import rospy
 from grasping_type_inference.grasping_object.grasping_object import GraspingObject
 from grasping_type_inference.grasping_object.orientation import Orientation
 
 
-if __name__ == "__main__":
-    orientation = Orientation('front', 'bottom')
-    grasping_object = GraspingObject('tankard.n.01', orientation)
+def get_grasping_type(req):
+    orientation = Orientation(req.object.facing_robot_face, req.object.bottom_face)
+    grasping_object = GraspingObject(req.object.type, orientation)
 
     result = grasping_object.get_most_probable_grasping_type()
 
+    solution = None
+
     for ground_atom in result.results.keys():
         if result.results[ground_atom] == 1:
-            print ground_atom
+            solution = ground_atom
+
+    return GetGraspingTypeResponse(solution)
+
+
+def grasping_type_inference_server():
+    rospy.init_node('grasping_type_inference_server')
+
+    s = rospy.Service('get_grasping_type', GetGraspingType, get_grasping_type)
+    print "Ready to infer the grasping type"
+    rospy.spin()
+
+
+if __name__ == "__main__":
+    grasping_type_inference_server()
