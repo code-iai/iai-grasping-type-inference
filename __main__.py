@@ -1,6 +1,6 @@
 from pracmln.mlnquery import MLNQuery
 from markov_logic_network.grasping_type_mln import grasping_type_pracmln_project, grasping_type_mln
-from word_net import determine_path_similarity_between_two_concepts
+from markov_logic_network.is_a_generator import get_is_a_ground_atoms
 from grasping_object.grasping_object import GraspingObject
 from grasping_object.orientation import Orientation
 
@@ -12,11 +12,13 @@ if __name__ == "__main__":
     orientation = Orientation('front', 'bottom')
     grasping_object = GraspingObject('tankard.n.01', orientation)
 
-    evidence_database = grasping_object.transform_to_mln_database(grasping_type_mln)
+    learned_objects = grasping_type_mln.domains['learnedObject']
 
-    for learned_object in grasping_type_mln.domains['learnedObject']:
-        similarity = determine_path_similarity_between_two_concepts(grasping_object.type, learned_object)
-        ground_atom = 'is_a({},{})'.format(grasping_object.type, learned_object)
+    evidence_database = grasping_object.transform_to_mln_database(grasping_type_mln)
+    is_a_ground_atoms = get_is_a_ground_atoms(grasping_object.type, learned_objects)
+
+    for ground_atom in is_a_ground_atoms.keys():
+        similarity = is_a_ground_atoms[ground_atom]
         evidence_database.add_ground_atom_with_truth_value(ground_atom, similarity)
 
     mln_query = MLNQuery(query_config, mln=grasping_type_mln, db=evidence_database.pracmln_database, verbose=0)
