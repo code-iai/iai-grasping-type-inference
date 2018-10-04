@@ -1,4 +1,4 @@
-from face import Face
+from grasping_type_inference.face import Face
 
 __FACING_ROBOT_FACE__ = 'facing_robot_face'
 __BOTTOM_FACE__ = 'bottom_face'

@@ -1,5 +1,7 @@
-from grasping_object.grasping_object import GraspingObject
-from grasping_object.orientation import Orientation
+#! /usr/bin/env python
+
+from grasping_type_inference.grasping_object.grasping_object import GraspingObject
+from grasping_type_inference.grasping_object.orientation import Orientation
 
 
 if __name__ == "__main__":

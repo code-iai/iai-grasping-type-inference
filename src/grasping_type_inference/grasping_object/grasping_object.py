@@ -1,7 +1,7 @@
-from markov_logic_network.database import Database
-import markov_logic_network.ground_atom_builder as gab
-from markov_logic_network.grasping_type_mln import grasping_type_mln
-from markov_logic_network.is_a_generator import get_is_a_ground_atoms
+from grasping_type_inference.markov_logic_network.database import Database
+import grasping_type_inference.markov_logic_network.ground_atom_builder as gab
+from grasping_type_inference.markov_logic_network.grasping_type_mln import grasping_type_mln
+from grasping_type_inference.markov_logic_network.is_a_generator import get_is_a_ground_atoms
 
 
 class GraspingObject(object):
