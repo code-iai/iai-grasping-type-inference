@@ -1,9 +1,11 @@
 #! /usr/bin/env python
-
-from grasping_type_inference_msgs.srv import *
+import rosservice
 import rospy
+from grasping_type_inference_msgs.srv import *
 from grasping_type_inference.grasping_object.grasping_object import GraspingObject
 from grasping_type_inference.grasping_object.orientation import Orientation
+
+s = None
 
 
 def get_grasping_type(req):
@@ -18,15 +20,30 @@ def get_grasping_type(req):
         if result.results[ground_atom] == 1:
             solution = ground_atom
 
+    # The MLN inference causes that the service dies sometimes without throwing an exception.
+    # However until the real cause will be found out, a reboot of the service fixes it.
+    if __is_service_running__():
+        try:
+            __start_service__()
+        except:
+            print''
+
     return GetGraspingTypeResponse(solution)
 
 
 def grasping_type_inference_server():
     rospy.init_node('grasping_type_inference_server')
-
-    s = rospy.Service('get_grasping_type', GetGraspingType, get_grasping_type)
+    __start_service__()
     print "Ready to infer the grasping type"
     rospy.spin()
+
+def __start_service__():
+    global s
+    s = rospy.Service('get_grasping_type', GetGraspingType, get_grasping_type)
+
+
+def __is_service_running__():
+    return '/get_grasping_type' not in rosservice.get_service_list()
 
 
 if __name__ == "__main__":
