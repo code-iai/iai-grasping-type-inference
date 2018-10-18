@@ -41,9 +41,11 @@ def get_grasp_type(arg):
 def get_is_a(arg0, arg1):
     return __get_ground_atom_with_two_args__(__IS_A__, arg0, arg1)
 
+
 def __get_ground_atom_with_two_args__(ground_atom_name, arg0, arg1):
     parameters = '({},{})'.format(arg0, arg1)
     return ground_atom_name + parameters
+
 
 def __get_ground_atom_with_one_arg__(ground_atom_name, arg):
     parameter = '({})'.format(arg)

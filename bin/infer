@@ -15,10 +15,12 @@ def get_grasping_type(req):
     result = grasping_object.get_most_probable_grasping_type()
 
     solution = None
+    max_prob = 0
 
     for ground_atom in result.results.keys():
-        if result.results[ground_atom] == 1:
+        if result.results[ground_atom] >= max_prob:
             solution = ground_atom
+            max_prob = result.results[ground_atom]
 
     # The MLN inference causes that the service dies sometimes without throwing an exception.
     # However until the real cause will be found out, a reboot of the service fixes it.
