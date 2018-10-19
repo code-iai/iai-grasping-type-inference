@@ -1,6 +1,6 @@
 import os
 from grasping_type_inference.definitions import ROOT_DIR
-from grasping_type_inference.markov_logic_network.mln import MarkovLogicNetwork
+from high_level_markov_logic_network.markov_logic_network import MarkovLogicNetwork
 
 
 def __get_grasping_type_mln__():

@@ -1,4 +1,4 @@
-import grasping_type_inference.markov_logic_network.ground_atom_builder as gab
+import grasping_type_inference.ground_atom_builder as gab
 
 
 class Orientation:
