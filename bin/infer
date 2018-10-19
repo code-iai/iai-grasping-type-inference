@@ -13,6 +13,7 @@ def get_grasping_type(req):
     grasping_object = GraspingObject(req.object.type, orientation)
 
     result = grasping_object.get_most_probable_grasping_type()
+    print result.results
 
     solution = None
     max_prob = 0

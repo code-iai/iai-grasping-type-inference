@@ -19,6 +19,11 @@ class GraspingObject(object):
             similarity = is_a_ground_atoms[ground_atom]
             evidence_database.add_ground_atom_with_truth_value(ground_atom, similarity)
 
+        print 'Evidence database:'
+
+        for evidence, truth_value in evidence_database.get_ground_atoms_with_truth_values():
+            print '{} {}'.format(truth_value, evidence)
+
         return grasping_type_mln.infer(evidence_database)
 
     def transform_to_mln_database(self, mln):
