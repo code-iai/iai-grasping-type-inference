@@ -1,6 +1,6 @@
 import unittest
-from grasping_object.grasping_object import GraspingObject
-from test.utils.test_object_generator import FACING_ROBOT_FACE, BOTTOM_FACE
+from grasping_type_inference.grasping_object import GraspingObject
+from grasping_type_inference.test import FACING_ROBOT_FACE, BOTTOM_FACE
 
 
 class EqualsTest(unittest.TestCase):

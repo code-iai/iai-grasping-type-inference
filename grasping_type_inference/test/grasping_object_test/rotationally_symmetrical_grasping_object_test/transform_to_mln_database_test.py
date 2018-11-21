@@ -1,5 +1,5 @@
 import unittest
-from test.utils.test_object_generator \
+from grasping_type_inference.test \
     import get_rotationally_symmetrical_grasping_object, get_grasping_object_as_true_mln_database, \
             GRASPING_OBJECT_TYPE, FACING_ROBOT_FACE, BOTTOM_FACE
 from markov_logic_network.grasping_type_mln import grasping_type_mln

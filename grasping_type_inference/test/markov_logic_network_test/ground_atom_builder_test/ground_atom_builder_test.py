@@ -1,6 +1,6 @@
 import unittest
 import markov_logic_network.ground_atom_builder as gab
-from test.utils.test_object_generator import FACING_ROBOT_FACE, BOTTOM_FACE, GRASPING_OBJECT_TYPE, GRASP_TYPE
+from grasping_type_inference.test import FACING_ROBOT_FACE, BOTTOM_FACE, GRASPING_OBJECT_TYPE, GRASP_TYPE
 
 
 class GroundAtomBuilderTest(unittest.TestCase):

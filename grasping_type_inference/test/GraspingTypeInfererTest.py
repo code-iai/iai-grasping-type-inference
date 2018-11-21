@@ -1,5 +1,5 @@
 import unittest
-from test.utils.test_object_generator import get_grasping_object
+from grasping_type_inference.test import get_grasping_object
 import markov_logic_network.grasping_type_mln as grasping_type_mln
 
 

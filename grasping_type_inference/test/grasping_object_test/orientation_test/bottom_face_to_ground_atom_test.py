@@ -1,6 +1,6 @@
 import unittest
-from face import Face
-from grasping_object.orientation import Orientation
+from grasping_type_inference.face import Face
+from grasping_type_inference.grasping_object import Orientation
 
 
 class BottomFaceToGroundAtomTest(unittest.TestCase):

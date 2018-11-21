@@ -1,11 +1,11 @@
-from grasping_object.orientation import Orientation
-from grasping_object.grasping_object import GraspingObject
-from grasping_object.rotationally_symmetrical_grasping_object import RotationallySymmetricalGraspingObject
+from grasping_type_inference.grasping_object import Orientation
+from grasping_type_inference.grasping_object import GraspingObject
+from grasping_type_inference.grasping_object import RotationallySymmetricalGraspingObject
 from markov_logic_network.grasping_type_mln import grasping_type_mln
 import markov_logic_network.ground_atom_builder as gab
 from markov_logic_network.database import Database
 
-from face import Face
+from grasping_type_inference.face import Face
 
 GRASPING_OBJECT_TYPE = 'cup.n.01'
 FACING_ROBOT_FACE = Face.FRONT

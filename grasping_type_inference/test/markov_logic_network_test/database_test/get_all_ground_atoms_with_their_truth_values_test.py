@@ -1,6 +1,6 @@
 import unittest
 
-from test.utils.test_object_generator \
+from grasping_type_inference.test \
     import get_test_true_mln_database, get_test_ground_atoms, get_test_false_mln_database
 
 
