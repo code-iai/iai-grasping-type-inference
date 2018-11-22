@@ -18,11 +18,6 @@ class GraspingObject(object):
         for ground_atom in is_a_ground_atoms:
             evidence_database.add_ground_atom(ground_atom)
 
-        print 'Evidence database:'
-
-        for evidence in evidence_database.ground_atoms:
-            print evidence
-
         return grasping_type_mln.infer(evidence_database)
 
     def transform_to_mln_database(self, mln):
