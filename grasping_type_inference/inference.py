@@ -4,13 +4,11 @@ from grasping_type_inference.grasping_object.orientation import Orientation
 
 class Inference(object):
     def __init__(self, *evidences):
-        self._facing_robot = evidences[0]
-        self._bottom_face = evidences[1]
-        self._object_type = evidences[2]
+        self._facing_robot_face, self._bottom_face, self._object_type = evidences
 
     def get_most_probable_result(self):
         orientation = Orientation(self._facing_robot_face, self._bottom_face)
-        grasping_object = GraspingObject(self._type, orientation)
+        grasping_object = GraspingObject(self._object_type, orientation)
 
         result = grasping_object.get_most_probable_grasping_type()
 
