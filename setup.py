@@ -13,9 +13,10 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/code-iai/iai-grasping-type-inference",
     packages=setuptools.find_packages(exclude=("test",)),
+    include_package_data=True,
     classifiers=[
         "Programming Language :: Python :: 2",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
-    ],
+    ]
 )
