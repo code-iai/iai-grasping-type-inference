@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 # Copyright © 2018 Institute for Artificial Intelligence - University of Bremen
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
