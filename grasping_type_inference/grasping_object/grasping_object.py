@@ -27,7 +27,7 @@ class GraspingObject(object):
         self.type = object_type
         self.orientation = orientation
 
-    def get_most_probable_grasping_type(self):
+    def get_grasping_types_probability_distribution(self):
         learned_objects = grasping_type_mln.domains['learnedObject']
 
         evidence_database = self.transform_to_mln_database(grasping_type_mln)

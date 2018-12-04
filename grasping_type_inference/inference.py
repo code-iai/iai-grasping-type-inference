@@ -24,11 +24,19 @@ class Inference(object):
     def __init__(self, *evidences):
         self._facing_robot_face, self._bottom_face, self._object_type = evidences
 
-    def get_most_probable_result(self):
-        orientation = Orientation(self._facing_robot_face, self._bottom_face)
-        grasping_object = GraspingObject(self._object_type, orientation)
+    def get_storted_list_of_grasping_types_based_on_probability(self):
+        result = self._get_grasping_types_probability_distribution()
+        unsorted_results = result.results
+        sorted_results = sorted(unsorted_results.items(), key=lambda x: x[1], reverse=True)
+        solutions = []
 
-        result = grasping_object.get_most_probable_grasping_type()
+        for sorted_result in sorted_results:
+            solutions.append(sorted_result[0])
+
+        return solutions
+
+    def get_most_probable_result(self):
+        result = self._get_grasping_types_probability_distribution()
 
         solution = None
         max_prob = 0
@@ -39,3 +47,9 @@ class Inference(object):
                 max_prob = result.results[ground_atom]
 
         return solution
+
+    def _get_grasping_types_probability_distribution(self):
+        orientation = Orientation(self._facing_robot_face, self._bottom_face)
+        grasping_object = GraspingObject(self._object_type, orientation)
+
+        return grasping_object.get_grasping_types_probability_distribution()
