@@ -33,7 +33,7 @@ class Inference(object):
         for sorted_result in sorted_results:
             solutions.append(sorted_result[0])
 
-        return solutions
+        return map(_remove_grasping_type_predicate, solutions)
 
     def get_most_probable_result(self):
         result = self._get_grasping_types_probability_distribution()
@@ -46,10 +46,16 @@ class Inference(object):
                 solution = ground_atom
                 max_prob = result.results[ground_atom]
 
-        return solution
+        return _remove_grasping_type_predicate(solution)
 
     def _get_grasping_types_probability_distribution(self):
         orientation = Orientation(self._facing_robot_face, self._bottom_face)
         grasping_object = GraspingObject(self._object_type, orientation)
 
         return grasping_object.get_grasping_types_probability_distribution()
+
+
+def _remove_grasping_type_predicate(atom):
+    splited_atom = atom.split('(')[1]
+
+    return splited_atom.split(')')[0]
