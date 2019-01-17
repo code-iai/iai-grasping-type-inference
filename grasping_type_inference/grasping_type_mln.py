@@ -27,7 +27,19 @@ def __get_grasping_type_mln__():
     return MarkovLogicNetwork(path_to_grasping_type_mln)
 
 
-grasping_type_mln = __get_grasping_type_mln__()
+def __get_grasping_mln_selector_mln__():
+    path_to_grasping_mln_selector_mln = os.path.join(ROOT_DIR, 'mln', 'grasping_mln_selector.pracmln')
+
+    return MarkovLogicNetwork(path_to_grasping_mln_selector_mln)
+
+
+def load_grasping_mln(mln_filename):
+    path_to_grasping_mln = os.path.join(ROOT_DIR, 'mln', mln_filename)
+
+    return MarkovLogicNetwork(path_to_grasping_mln)
+
+
+grasping_mln_selector_mln = __get_grasping_mln_selector_mln__()
 
 
 
