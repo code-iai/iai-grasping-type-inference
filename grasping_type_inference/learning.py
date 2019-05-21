@@ -17,8 +17,10 @@ import os
 from grasping_type_inference.definitions import ROOT_DIR
 from high_level_markov_logic_network.markov_logic_network import MarkovLogicNetwork
 
+MLN_PATH = os.path.join(ROOT_DIR, 'mln')
 
-def train_all_grasping_mlns(path_to_training_files):
+
+def train_all_grasping_mlns(path_to_training_files, path_to_mln_files=MLN_PATH):
     for training_file in os.listdir(path_to_training_files):
         if training_file.endswith('.db'):
             path_mln_training_file = os.path.join(path_to_training_files, training_file)
@@ -30,7 +32,7 @@ def train_all_grasping_mlns(path_to_training_files):
             #BOWL.train.db
             object_type = training_file.split('.')[0].lower()
             grasping_object_type_mln_name = 'grasping_{}.pracmln'.format(object_type)
-            path_to_grasping_type_mln = os.path.join(ROOT_DIR, 'mln', grasping_object_type_mln_name)
+            path_to_grasping_type_mln = os.path.join(path_to_mln_files, grasping_object_type_mln_name)
             grasping_object_type_mln = MarkovLogicNetwork(path_to_grasping_type_mln)
             print 'Learning {} ...'.format(grasping_object_type_mln_name)
             grasping_object_type_mln.learn(mln_training_file_content)
