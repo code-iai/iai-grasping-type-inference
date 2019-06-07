@@ -19,7 +19,7 @@
 from high_level_markov_logic_network.database import Database
 from high_level_markov_logic_network.fuzzy_markov_logic_network.is_a_generator import get_is_a_ground_atoms
 import grasping_type_inference.ground_atom_builder as gab
-from grasping_type_inference.grasping_type_mln import load_grasping_mln, grasping_mln_selector_mln
+from grasping_type_inference.grasping_type_mln import load_grasping_mln, get_grasping_mln_selector_mln
 
 
 class GraspingObject(object):
@@ -29,7 +29,7 @@ class GraspingObject(object):
 
     def _infer_required_grasping_mln_(self):
         evidence_database = self._create_evidence_database_for_grasping_selector_mln_()
-        result = grasping_mln_selector_mln.infer(evidence_database)
+        result = get_grasping_mln_selector_mln().infer(evidence_database)
         most_probable_result = _get_the_most_probable_result(result)
 
         return _remove_predicate_(most_probable_result)
@@ -44,7 +44,7 @@ class GraspingObject(object):
         return grasping_mln.infer(evidence_database)
 
     def _create_evidence_database_for_grasping_selector_mln_(self):
-        return self._create_grasping_object_related_evidences_with_given_mln_(grasping_mln_selector_mln)
+        return self._create_grasping_object_related_evidences_with_given_mln_(get_grasping_mln_selector_mln())
 
     def _create_evidence_database_for_grasping_mln_(self, grasping_mln):
         evidence_database = self._create_grasping_object_related_evidences_with_given_mln_(grasping_mln)

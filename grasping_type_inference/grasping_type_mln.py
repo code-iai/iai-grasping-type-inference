@@ -46,7 +46,9 @@ def load_grasping_mln(mln_filename):
     return MarkovLogicNetwork(path_to_grasping_mln)
 
 
-grasping_mln_selector_mln = __get_grasping_mln_selector_mln__()
+def get_grasping_mln_selector_mln():
+    path_to_grasping_mln_selector_mln = os.path.join(MLN_PATH, 'grasping_mln_selector.pracmln')
+    return MarkovLogicNetwork(path_to_grasping_mln_selector_mln)
 
 
 
